@@ -1,6 +1,10 @@
 def convert_time_to_centaseconds(time: str) -> int:
-    minutes, rest = time.split(":")
-    seconds, hundredths = rest.split(".")
+    if ":" in time:
+        minutes, rest = time.split(":")
+        seconds, hundredths = rest.split(".")
+    else:
+        minutes = 0
+        seconds, hundredths = time.split(".")
     centaseconds = int(minutes)*6000 + int(seconds)*100 + int(hundredths)
     return centaseconds
 
